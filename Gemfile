@@ -45,6 +45,7 @@ group :development do
   gem 'guard', require: false
   gem 'guard-annotate', require: false
   gem 'guard-rubocop', require: false
+  gem 'guard-foreman'
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
   gem 'guard-bundler', require: false

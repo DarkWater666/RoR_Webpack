@@ -47,3 +47,9 @@ end
 guard :rails_best_practices do
   watch(%r{^app/(.+)\.rb$})
 end
+
+guard :foreman, procfile: 'Procfile.dev' do
+  watch( /^app\/(controllers|models|helpers)\/.+\.rb$/ )
+  watch( /^lib\/.+\.rb$/ )
+  watch( /^config\/*/ )
+end
