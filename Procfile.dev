@@ -1,1 +1,2 @@
 web: rails s Puma -b 0.0.0.0 -p 3000 -C config/puma.rb
+client: sh -c 'rm app/assets/javascripts/front/* || true && npm run build'
