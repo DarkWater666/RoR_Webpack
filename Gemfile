@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # server
 gem 'puma', '~> 3.0'
+gem 'foreman', group: :development
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # debug
