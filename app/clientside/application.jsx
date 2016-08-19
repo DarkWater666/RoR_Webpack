@@ -6,7 +6,7 @@ class Application extends React.Component {
     return(
       <div>
         <h1>Hello, MotherFucker!</h1>
-        <p>I'm a React Component!!!</p>
+        <p>I'm a React Component!</p>
       </div>
     );
   }

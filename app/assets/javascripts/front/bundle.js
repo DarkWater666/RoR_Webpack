@@ -90,7 +90,7 @@
 	        _react2.default.createElement(
 	          'p',
 	          null,
-	          'I\'m a React Component!!!'
+	          'I\'m a React Component!'
 	        )
 	      );
 	    }
