@@ -1,3 +1,6 @@
+notification :off
+interactor :simple
+
 guard 'annotate', show_indexes: true, notify: false do
   watch('db/schema.rb')
   watch('db/structure.sql')
@@ -32,9 +35,10 @@ guard :livereload do
   watch(%r{app/helpers/.+\.rb})
   watch(%r{public/.+\.(css|js|html)})
   watch(%r{config/locales/.+\.yml})
-  watch(%r{(app|vendor)(/assets/\w+/(.+\.(slim|haml|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+  watch(%r{(app|vendor)(/assets/\w+/(.+\.(slim|haml))).*}) { |m| "/assets/#{m[3]}.html" }
   watch(%r{(app|vendor)(/assets/\w+/(.+)\.(styl|sass|scss))}) { |m| "/assets/#{m[3]}.css" }
-  watch(%r{(app|vendor)(/assets/\w+/(.+)\.(js|coffee))}) { |m| "/assets/#{m[3]}.js" }
+  watch(%r{(app|vendor)(/assets/\w+/(.+)\.(coffee))}) { |m| "/assets/#{m[3]}.js" }
 end
 
 guard 'brakeman' do

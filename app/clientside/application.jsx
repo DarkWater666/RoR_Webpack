@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import Test from './components/test'
 
-class Application extends React.Component {
+import styles from './application.sss'
+
+class Application extends Component {
   render() {
     return(
-      <div>
+      <div className={ styles.root }>
         <h1>Hello, MotherFucker!</h1>
         <p>I'm a React Component!</p>
         <p>I came to kill you!</p>

@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default class Test extends React.Component {
+import styles from './test.sss'
+
+export default class Test extends Component {
   render() {
     return(
-        <div className="pizdets">Пиздишь, { this.props.name }!</div>
+        <div className={ styles.pizdets }>Пиздишь, { this.props.name }!</div>
     );
   }
 }
