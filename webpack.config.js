@@ -1,4 +1,5 @@
 const path         = require('path');
+const webpack      = require('webpack');
 const precss       = require('precss');
 const autoprefixer = require('autoprefixer');
 const rucksack     = require('rucksack-css');
@@ -7,6 +8,7 @@ const easyimport   = require('postcss-easy-import')({ extensions: ['.sss'] });
 const webpackCSS   = require('extract-text-webpack-plugin');
 
 config = {
+  devtool: 'eval-source-map',
   context: __dirname,
   entry: [
     'es5-shim/es5-shim',
@@ -28,8 +30,9 @@ config = {
       { test: /\.sss$/, loader:
         webpackCSS.extract(
           'style',
-          [ 'css?modules&importLoaders=1&localIdentName=[name]-[local]',
-            'postcss?sourceMap=inline&parser=sugarss'
+          [
+            'css?modules&importLoaders=1&localIdentName=[name]-[local]&minimize&',
+            'postcss?parser=sugarss'
           ].join('!')
         )
       }
@@ -39,7 +42,12 @@ config = {
     return [precss, nested, easyimport, rucksack, autoprefixer];
   },
   plugins: [
-    new webpackCSS('../../stylesheets/front/client.css')
+    new webpackCSS('../../stylesheets/front/client.css'),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    })
   ]
 };
 
