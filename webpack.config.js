@@ -1,13 +1,17 @@
-const path         = require('path');
-const webpack      = require('webpack');
-const precss       = require('precss');
-const autoprefixer = require('autoprefixer');
-const rucksack     = require('rucksack-css');
-const nested       = require('postcss-nested-props');
-const easyimport   = require('postcss-easy-import')({ extensions: ['.sss'] });
-const webpackCSS   = require('extract-text-webpack-plugin');
+const path              = require('path'),
+      webpack           = require('webpack'),
+      precss            = require('precss'),
+      ccsnext           = require('postcss-cssnext'),
+      rucksack          = require('rucksack-css'),
+      size              = require('postcss-size'),
+      nestedProps       = require('postcss-nested-props'),
+      nested            = require('postcss-nested'),
+      nestedAncestors   = require('postcss-nested-ancestors'),
+      easyimport        = require('postcss-easy-import')({ extensions: ['.sss'], addDependencyTo: webpack }),
+      webpackCSS        = require('extract-text-webpack-plugin'),
+      prodBuild         = process.env.NODE_ENV === 'production';
 
-config = {
+var config = {
   devtool: 'eval-source-map',
   context: __dirname,
   entry: [
@@ -17,8 +21,8 @@ config = {
     './app/clientside/application'
   ],
   output: {
-    path: path.join(__dirname, '/app/assets/javascripts/front/'),
-    filename: 'client.js'
+    path: path.join(__dirname, '/app/assets/javascripts/'),
+    filename: prodBuild ? 'client.min.js' : 'client.js'
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -31,24 +35,26 @@ config = {
         webpackCSS.extract(
           'style',
           [
-            'css?modules&importLoaders=1&localIdentName=[name]-[local]&minimize&',
+            'css?modules&importLoaders=1&localIdentName=[name]-[local]&minimize',
             'postcss?parser=sugarss'
           ].join('!')
         )
       }
     ]
   },
-  postcss: function() {
-    return [precss, nested, easyimport, rucksack, autoprefixer];
+  postcss: function(webpack) {
+    return [easyimport, precss, ccsnext, nested, nestedAncestors, rucksack, size];
   },
   plugins: [
-    new webpackCSS('../../stylesheets/front/client.css'),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    })
+    new webpackCSS('../stylesheets/client.min.css')
   ]
 };
+
+if (prodBuild) {
+  config.plugins.push(
+    new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
+    new webpack.optimize.UglifyJsPlugin({ minimize: true })
+  );
+}
 
 module.exports = config;

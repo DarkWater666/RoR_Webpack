@@ -10,7 +10,7 @@ public/sitemap.xml
 db/structure.sql
 config/application.yml
 
-npm-debug.log
+npm-debug.*
 node_modules
 /app/assets/javascript/front/*
 .*
