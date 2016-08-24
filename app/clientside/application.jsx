@@ -1,8 +1,9 @@
+import styles from './application.sss'
+
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import Test from './components/test'
 
-import styles from './application.sss'
 
 class Application extends Component {
   render() {

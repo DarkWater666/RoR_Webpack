@@ -1,0 +1,130 @@
+:global
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, header, hgroup,
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video
+    margin: 0
+    padding: 0
+    border: 0
+    outline: none
+    font-size: 100%
+    font: inherit
+    vertical-align: baseline
+    text-rendering: geometricPrecision
+
+  article, aside, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section
+    display: block
+
+  ol, ul
+    list-style: none
+
+  blockquote, q
+    quotes: none
+
+  blockquote:before, blockquote:after,
+  q:before, q:after
+    content: ''
+    content: none
+
+  table
+    border-collapse: collapse
+    border-spacing: 0
+
+  html
+    font-size: var(--default_font_size)
+    color: var(--graphite)
+    size: 100%
+    background: white
+    min-height: 500px
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+    overflow-x: hidden
+
+  body
+    font-style: normal
+    font-weight: normal
+    font-size: inherit
+    font-family: var(--default_font)
+    min-height: 100%
+    size: 100%
+    margin: 0
+    line-height: 1
+    color: inherit
+    -webkit-font-smoothing: antialiased
+    text-rendering: geometricPrecision
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.25), only screen and (min-device-pixel-ratio: 1.25), only screen and (min-resolution: 200dpi), only screen and (min-resolution: 1.25dppx)
+      -webkit-font-smoothing: antialiased
+
+  h1
+    font-size: 1.5em
+  h2
+    font-size: 1.4em
+  h3
+    font-size: 1.3em
+  h4
+    font-size: 1.2em
+  h5
+    font-size: 1.1em
+  h6
+    font-size: 1.05em
+
+  ol, ul
+    list-style: none
+
+  blockquote, q
+    quotes: none
+
+  table
+    border-collapse: collapse
+    border-spacing: 0
+
+  a
+    text-decoration: none
+    cursor: pointer
+    color: inherit
+
+
+  .bgc-theme_back
+    background: var(--theme_back)
+  .bgc-theme_light
+    background: var(--theme_light)
+  .bgc-theme_dark
+    background: var(--theme_dark)
+  .bgc-theme_primary
+    background: var(--theme_primary)
+  .bgc-theme_warn
+    background: var(--theme_warn)
+  .bgc-theme_accent
+    background: var(--theme_accent)
+  .bgc-theme_label
+    background: var(--theme_label)
+
+  .clear
+    clear: both
+
+  .hidden
+    display: none !important
+    visibility: hidden !important
+
+  .clearfix:after
+    visibility: hidden
+    display: block
+    font-size: 0
+    content: " "
+    clear: both
+    height: 0
+
+  .noscroll
+    overflow: hidden
+    position: fixed

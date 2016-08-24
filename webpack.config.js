@@ -8,6 +8,20 @@ const path              = require('path'),
       nested            = require('postcss-nested'),
       nestedAncestors   = require('postcss-nested-ancestors'),
       easyimport        = require('postcss-easy-import')({ extensions: ['.sss'], addDependencyTo: webpack }),
+      autoreset         = require('postcss-autoreset')({
+                            reset: {
+                              all: 'initial',
+                              fontSize: '1rem',
+                              fontFamily: 'inherit',
+                              fontWeight: 'inherit',
+                              fontStyle: 'inherit'
+                            },
+                            rulesMatcher: function rulesMatcher(rule) {
+                              return !rule.selector.match(/([^_]_[^_]|:|::)/);
+                            }
+                          }),
+      fontMagician      = require('postcss-font-magician'),
+      flexbugs          = require('postcss-flexbugs-fixes'),
       webpackCSS        = require('extract-text-webpack-plugin'),
       prodBuild         = process.env.NODE_ENV === 'production';
 
@@ -35,15 +49,16 @@ var config = {
         webpackCSS.extract(
           'style',
           [
-            'css?modules&importLoaders=1&localIdentName=[name]-[local]&minimize',
+            'css?modules&importLoaders=1&localIdentName=[name]-[local]---[hash:base64:5]&minimize',
             'postcss?parser=sugarss'
           ].join('!')
         )
       }
     ]
   },
-  postcss: function(webpack) {
-    return [easyimport, precss, ccsnext, nested, nestedAncestors, rucksack, size];
+  postcss: function() {
+    return [easyimport, precss, ccsnext, nested, nestedAncestors, fontMagician,
+            rucksack, size, autoreset, flexbugs];
   },
   plugins: [
     new webpackCSS('../stylesheets/client.min.css')

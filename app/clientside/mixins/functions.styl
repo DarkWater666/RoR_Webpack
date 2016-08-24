@@ -1,0 +1,88 @@
+support-for-ie ?= true
+
+size(w = false, h = false)
+  unless w
+    w = h
+  unless h
+    h = w
+  width w
+  height h
+
+vertical_align(top = 50%, position = relative)
+  transform translateY(-50%)
+  position position
+  top top
+
+image(image, size = cover, positionH = center, positionV = center, color = transparent, repeat = no-repeat)
+  url = '/assets/' + image
+  background color url(url) repeat positionH positionV
+  background-size size
+
+font(size = default_font_size, type = 'normal', weight = 100, style = normal)
+  if type == 'normal'
+    family = default_font
+  if type == 'condensed'
+    family = condensed_font
+  if type == 'accent'
+    family = accent_font
+  if type == 'title'
+    family = title_font
+  font style weight size family
+
+respond(media)
+  /* ---------------------------------------- MAIN RESPONDERS -------------------------------------- */
+
+  if media == 'retina'
+    @media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) /*  retina  */
+      {block}
+  if media == 'fullhd'
+    @media only screen and (min-width: fhd) /*  after 1920  */
+      {block}
+  if media == 'desktop'
+    @media only screen and (max-width: fhd - 1) /*  before 1919  */
+      {block}
+  if media == 'laptop'
+    @media only screen and (max-width: wsxga - 1) /*  before 1649  */
+      {block}
+  if media == 'tablet'
+    @media only screen and (max-width: hd - 1) /*  before 1365  */
+      {block}
+  if media == 'phone'
+    @media only screen and (max-width: xga - 1) /*  before 1023  */
+      {block}
+  if media == 'mobile'
+    @media only screen and (max-width: hvga - 1) /*  before 479  */
+      {block}
+
+  /* ----------------------------------------------------------------------------------------------- */
+  /* --------------------------------------- HELPER RESPONDERS ------------------------------------- */
+
+  if media == 'widedesk'
+    @media only screen and (min-width: uxga) and (max-width: fhd - 1) /*  from 1600 to 1919  */
+      {block}
+  if media == 'widelap'
+    @media only screen and (min-width: wxga) and (max-width: uxga - 1) /*  from 1440 to 1599  */
+      {block}
+  if media == 'widenet'
+    @media only screen and (min-width: hd) and (max-width: wxga - 1) /*  from 1366 to 1439  */
+      {block}
+  if media == 'macbook'
+    @media only screen and (min-width: sxga) and (max-width: hd - 1) /*  from 1280 to 1365  */
+      {block}
+  if media == 'palmbook'
+    @media only screen and (min-width: xga) and (max-width: sxga - 1) /*  from 1024 to 1279  */
+      {block}
+  if media == 'fablet'
+    @media only screen and (min-width: vga + 1) and (max-width: xga - 1) /*  from 651 to 1023  */
+      {block}
+  if media == 'smart'
+    @media only screen and (min-width: hvga + 1) and (max-width: vga) /*  from 481 to 650  */
+      {block}
+  if media == 'mini'
+    @media only screen and (min-width: cga + 1) and (max-width: hvga) /*  from 321 to 480   */
+      {block}
+  if media == 'micro'
+    @media only screen and (max-width: cga) /*  before 320   */
+      {block}
+
+/* ----------------------------------------------------------------------------------------------- */
