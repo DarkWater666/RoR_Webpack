@@ -2,8 +2,12 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 # application
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '5.0.0'
 gem 'pg', '~> 0.18'
+
+gem 'tiny_tds'
+gem 'activerecord-sqlserver-adapter', '>= 4.2.15',
+    github: 'rails-sqlserver/activerecord-sqlserver-adapter', branch: 'rails5'
 
 # css
 gem 'sass-rails', '~> 5.0'
