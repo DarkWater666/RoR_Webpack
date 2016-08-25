@@ -8,8 +8,8 @@ const path              = require('path'),
       nested            = require('postcss-nested'),
       nestedAncestors   = require('postcss-nested-ancestors'),
       assets            = require('postcss-assets')({
-        loadPaths: ['./app/assets/fonts', './app/assets/images']
-      }),
+                            loadPaths: ['./app/clientside/fonts', './app/clientside/images']
+                          }),
       easyimport        = require('postcss-easy-import')({ extensions: ['.sss'], addDependencyTo: webpack }),
       autoreset         = require('postcss-autoreset')({
                             reset: {
@@ -24,10 +24,11 @@ const path              = require('path'),
                             }
                           }),
       fontMagician      = require('postcss-font-magician')({
-                            hosted: './app/assets/fonts'
+                            hosted: './app/clientside/fonts'
                           }),
       flexbugs          = require('postcss-flexbugs-fixes'),
       webpackCSS        = require('extract-text-webpack-plugin'),
+      // styleLint         = require('stylelint-webpack-plugin'),
       prodBuild         = process.env.NODE_ENV === 'production';
 
 var config = {
@@ -41,7 +42,7 @@ var config = {
   ],
   output: {
     path: path.join(__dirname, '/app/assets/javascripts/'),
-    filename: prodBuild ? 'client.min.js' : 'client.js'
+    filename: 'client' + (prodBuild ? '.min' : '') + '.js'
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -54,7 +55,8 @@ var config = {
         webpackCSS.extract(
           'style',
           [
-            'css?modules&importLoaders=1&localIdentName=[name]-[local]---[hash:base64:5]&minimize',
+            'css?modules&importLoaders=1&localIdentName=[name]-[local]---[hash:base64:5]' +
+            (prodBuild ? '&minimize' : ''),
             'postcss?parser=sugarss'
           ].join('!')
         )
@@ -66,7 +68,13 @@ var config = {
             rucksack, size, autoreset, flexbugs];
   },
   plugins: [
-    new webpackCSS('../stylesheets/client.min.css')
+    // new styleLint({
+    //   configFile: '.stylelintrc',
+    //   context:    'app/clientside',
+    //   files:      '**/*.s?(a|c|s)ss',
+    //   failOnError: true
+    // }),
+    new webpackCSS('../stylesheets/client' + (prodBuild ? '.min' : '') + '.css')
   ]
 };
 
