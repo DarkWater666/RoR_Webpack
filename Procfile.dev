@@ -1,2 +1,2 @@
 server: rails s Puma -b 0.0.0.0 -p 3000 -C config/puma.rb
-client: sh -c 'rm -rf app/assets/javascripts/client.* || true && npm run build'
+client: sh -c 'rm -rf app/assets/javascripts/client.* || true && npm run develop'

@@ -33599,6 +33599,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: _test2.default.pizdets },
+	        _react2.default.createElement('div', { className: _test2.default.picture }),
 	        _react2.default.createElement(
 	          'p',
 	          { className: _test2.default.paragraph },
@@ -33628,7 +33629,7 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-	module.exports = {"pizdets":"test-pizdets---3SLAn","pizdets__item":"test-pizdets__item---1Ibtq","pizdets__item_modify":"test-pizdets__item_modify---1UtBK"};
+	module.exports = {"pizdets":"test-pizdets---3SLAn","pizdets__item":"test-pizdets__item---1Ibtq","picture":"test-picture---9qj9s","pizdets__item_modify":"test-pizdets__item_modify---1UtBK"};
 
 /***/ }
 /******/ ]);

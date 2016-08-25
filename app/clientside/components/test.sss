@@ -13,7 +13,7 @@
   size: calc(2 * var(--column)) var(--cga)
   color: var(--mainColor)
   clear: fix
-  display: flex
+  display: block
   background: hsl(134, 50%, 50%)
   margin: 0 30px
 
@@ -26,4 +26,8 @@
       color: white
       @mixin icon search
 
-
+.picture
+  background: inline('cover.jpg')
+  size: width('cover.jpg', 2) height('cover.jpg', 2)
+  background-size: cover
+  display: block

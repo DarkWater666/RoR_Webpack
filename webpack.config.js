@@ -7,6 +7,9 @@ const path              = require('path'),
       nestedProps       = require('postcss-nested-props'),
       nested            = require('postcss-nested'),
       nestedAncestors   = require('postcss-nested-ancestors'),
+      assets            = require('postcss-assets')({
+        loadPaths: ['./app/assets/fonts', './app/assets/images']
+      }),
       easyimport        = require('postcss-easy-import')({ extensions: ['.sss'], addDependencyTo: webpack }),
       autoreset         = require('postcss-autoreset')({
                             reset: {
@@ -20,7 +23,9 @@ const path              = require('path'),
                               return !rule.selector.match(/([^_]_[^_]|:|::)/);
                             }
                           }),
-      fontMagician      = require('postcss-font-magician'),
+      fontMagician      = require('postcss-font-magician')({
+                            hosted: './app/assets/fonts'
+                          }),
       flexbugs          = require('postcss-flexbugs-fixes'),
       webpackCSS        = require('extract-text-webpack-plugin'),
       prodBuild         = process.env.NODE_ENV === 'production';
@@ -57,7 +62,7 @@ var config = {
     ]
   },
   postcss: function() {
-    return [easyimport, precss, ccsnext, nested, nestedAncestors, fontMagician,
+    return [assets, easyimport, precss, ccsnext, nested, nestedAncestors, fontMagician,
             rucksack, size, autoreset, flexbugs];
   },
   plugins: [
