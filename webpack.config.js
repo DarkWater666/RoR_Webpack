@@ -45,7 +45,7 @@ var config = {
     filename: 'client' + (prodBuild ? '.min' : '') + '.js'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.sss']
   },
   module: {
     loaders: [

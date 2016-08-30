@@ -1,23 +1,23 @@
-import styles from './application.sss'
-
+import './application.sss'
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import Test from './components/test'
+import { Router, Route, Link, browserHistory } from 'react-router'
+import DOM from 'react-dom'
 
+import Index from './components/Index'
+import Page from './components/Page'
 
 class Application extends Component {
   render() {
-    return(
-      <div className={ styles.root }>
-        <h1>Hello, MotherFucker!</h1>
-        <p>I'm a React Component!</p>
-        <p>I came to kill you!</p>
-        <Test name="сцуко"/>
-      </div>
-    );
+    return this.props.children;
   }
 }
 
-let test = document.getElementById('react');
-
-ReactDOM.render(<Application />, test);
+DOM.render((
+  <Router history={ browserHistory }>
+    <Route component={ Application }>
+      <Route path='/' component={ Index }/>
+      <Route path='page' component={ Page }/>
+    </Route>
+  </Router>
+  ), document.getElementById('application')
+);
