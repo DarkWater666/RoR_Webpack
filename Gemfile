@@ -4,6 +4,7 @@ ruby '2.3.1'
 # application
 gem 'rails', '5.0.0'
 gem 'pg', '~> 0.18'
+gem 'responders'
 
 gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter', '>= 4.2.15',

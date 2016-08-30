@@ -301,6 +301,8 @@ GEM
       parser (~> 2.3.1, >= 2.3.1.2)
       rainbow (~> 2.0)
     require_all (1.3.3)
+    responders (2.3.0)
+      railties (>= 4.2.0, < 5.1)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -439,6 +441,7 @@ DEPENDENCIES
   rails (= 5.0.0)
   rails_best_practices
   rb-fsevent
+  responders
   rubocop
   ruby_gntp
   rubycritic
