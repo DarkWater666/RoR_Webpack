@@ -1,2 +1,8 @@
 <%= content_for :title, name %>
-<div id="application"></div>
+<div id='application'>
+  <noscript>
+    <div>
+      <%= render "front/#{name}" %>
+    </div>
+  </noscript>
+</div>
