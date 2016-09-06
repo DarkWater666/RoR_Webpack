@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import styles from './test.sss'
+import styles from './Test.sss'
 
 export default class Test extends Component {
   render() {

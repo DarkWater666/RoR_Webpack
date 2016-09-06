@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import styles from './index'
+import styles from './Index.sss'
 
-import Test from './test'
+import Test from '../../widgets/test/Test'
 
 export default class Index extends Component {
   render() {

@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import { Router, Route, Link, browserHistory } from 'react-router'
 import { render } from 'react-dom'
 
-import Index from './components/Index'
-import Page from './components/Page'
+import Index from './components/pages/index/Index'
+import Page from './components/pages/page/Page'
 
 class Application extends Component {
   render() {
